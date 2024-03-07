@@ -57,7 +57,7 @@ interface Props {
 }
 
 const WIDTH = 200;
-const HEIGHT = 279;
+const HEIGHT = 200;
 
 function ProductCard({
   product,
@@ -104,7 +104,7 @@ function ProductCard({
     <a
       href={url && relative(url)}
       aria-label="view product"
-      class="btn btn-block"
+      class="btn btn-block btn-accent text-white"
     >
       {l?.basics?.ctaText || "Ver produto"}
     </a>
@@ -113,7 +113,7 @@ function ProductCard({
   return (
     <div
       id={id}
-      class={`card card-compact group w-full ${
+      class={`card card-compact group w-full px-4 ${
         align === "center" ? "text-center" : "text-start"
       } ${l?.onMouseOver?.showCardShadow ? "lg:hover:card-bordered" : ""}
         ${
@@ -198,7 +198,7 @@ function ProductCard({
             alt={front.alternateName}
             width={WIDTH}
             height={HEIGHT}
-            class={`bg-base-100 col-span-full row-span-full rounded w-full ${
+            class={`bg-base-100 col-span-full row-span-full rounded w-full object-contain ${
               l?.onMouseOver?.image == "Zoom image"
                 ? "duration-100 transition-scale scale-100 lg:group-hover:scale-125"
                 : ""

@@ -1,10 +1,8 @@
-import { AppContext } from "$store/apps/site.ts";
 import type { Props as SearchbarProps } from "$store/components/search/Searchbar.tsx";
 import Drawers from "$store/islands/Header/Drawers.tsx";
 import { usePlatform } from "$store/sdk/usePlatform.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
 import type { SiteNavigationElement } from "apps/commerce/types.ts";
-import type { SectionProps } from "deco/types.ts";
 import Alert from "./Alert.tsx";
 import Navbar from "./Navbar.tsx";
 import { headerHeight } from "./constants.ts";
@@ -76,8 +74,7 @@ function Header({
   },
   logoPosition = "center",
   buttons,
-  device,
-}: SectionProps<typeof loader>) {
+}: Props) {
   const platform = usePlatform();
   const items = navItems ?? [];
 
@@ -92,7 +89,6 @@ function Header({
           <div class="bg-base-100 fixed w-full z-50">
             {alerts && alerts.length > 0 && <Alert alerts={alerts} />}
             <Navbar
-              device={device}
               items={items}
               searchbar={searchbar && { ...searchbar, platform }}
               logo={logo}
@@ -105,9 +101,5 @@ function Header({
     </>
   );
 }
-
-export const loader = (props: Props, _req: Request, ctx: AppContext) => {
-  return { ...props, device: ctx.device };
-};
 
 export default Header;

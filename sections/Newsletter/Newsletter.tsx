@@ -7,35 +7,19 @@ export interface Form {
   helpText?: string;
 }
 
-interface Content {
-  border?: boolean;
-  /**
-   * @format button-group
-   * @options deco-sites/storefront/loaders/icons.ts
-   */
-  alignment?: "Left" | "Center" | "Right";
-  bgColor?: "Normal" | "Reverse";
-}
-
-interface Header {
-  /**
-   * @format button-group
-   * @options deco-sites/storefront/loaders/icons.ts
-   */
-  fontSize?: "Small" | "Normal" | "Large";
-}
-
-interface Layout {
-  header?: Header;
-  content?: Content;
-}
-
 export interface Props {
   title?: string;
   /** @format textarea */
   description?: string;
   form?: Form;
-  layout?: Layout;
+  layout?: {
+    headerFontSize?: "Large" | "Normal";
+    content?: {
+      border?: boolean;
+      alignment?: "Center" | "Left" | "Side to side";
+      bgColor?: "Normal" | "Reverse";
+    };
+  };
 }
 
 const DEFAULT_PROPS: Props = {
@@ -48,12 +32,10 @@ const DEFAULT_PROPS: Props = {
       'Ao se inscrever, você concorda com nossa <a class="link" href="/politica-de-privacidade">Política de privacidade</a>.',
   },
   layout: {
-    header: {
-      fontSize: "Large",
-    },
+    headerFontSize: "Large",
     content: {
       border: false,
-      alignment: "Left",
+      alignment: "Center",
     },
   },
 };
@@ -69,7 +51,7 @@ export default function Newsletter(props: Props) {
       description={description}
       alignment={layout?.content?.alignment === "Left" ? "left" : "center"}
       colorReverse={isReverse}
-      fontSize={layout?.header?.fontSize}
+      fontSize={layout?.headerFontSize}
     />
   );
 
@@ -130,7 +112,7 @@ export default function Newsletter(props: Props) {
           </div>
         </div>
       )}
-      {layout?.content?.alignment === "Right" && (
+      {layout?.content?.alignment === "Side to side" && (
         <div
           class={`container flex flex-col rounded justify-between lg:flex-row p-4 gap-6 lg:p-16 lg:gap-12 ${bgLayout}`}
         >

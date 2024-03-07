@@ -9,54 +9,54 @@ import Color from "npm:colorjs.io";
 
 export interface ThemeColors {
   /**
-   * @format color-input
+   * @format color
    * @title Base
    */
   "base-100"?: string;
-  /** @format color-input */
+  /** @format color */
   "primary"?: string;
-  /** @format color-input */
+  /** @format color */
   "secondary"?: string;
   /**
    * @title Accent
-   * @format color-input */
+   * @format color */
   "tertiary"?: string;
-  /** @format color-input */
+  /** @format color */
   "neutral"?: string;
-  /** @format color-input */
+  /** @format color */
   "success"?: string;
-  /** @format color-input */
+  /** @format color */
   "warning"?: string;
-  /** @format color-input */
+  /** @format color */
   "error"?: string;
-  /** @format color-input */
+  /** @format color */
   "info"?: string;
 }
 
 export interface ComplementaryColors {
-  /** @format color-input */
+  /** @format color */
   "base-200"?: string;
-  /** @format color-input */
+  /** @format color */
   "base-300"?: string;
-  /** @format color-input */
+  /** @format color */
   "base-content"?: string;
-  /** @format color-input */
+  /** @format color */
   "primary-content"?: string;
-  /** @format color-input */
+  /** @format color */
   "secondary-content"?: string;
   /**
    * @title Accent Content
-   * @format color-input */
+   * @format color */
   "tertiary-content"?: string;
-  /** @format color-input */
+  /** @format color */
   "neutral-content"?: string;
-  /** @format color-input */
+  /** @format color */
   "success-content"?: string;
-  /** @format color-input */
+  /** @format color */
   "warning-content"?: string;
-  /** @format color-input */
+  /** @format color */
   "error-content"?: string;
-  /** @format color-input */
+  /** @format color */
   "info-content"?: string;
 }
 

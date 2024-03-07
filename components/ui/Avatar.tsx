@@ -36,7 +36,7 @@ function Avatar({ content, variant = "default" }: Props) {
   return (
     <div class="avatar placeholder text-sm font-light h-6">
       <div
-        class={`${colors[content] ?? colors[variant]} ${variants[variant]}`}
+        class={`${colors[content] ?? colors[variant]} ${variants[variant]} p-4`}
       >
         <span class="uppercase ">
           {colors[content] ? "" : content.substring(0, 2)}

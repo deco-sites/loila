@@ -1,6 +1,5 @@
-import { invoke } from "$store/runtime.ts";
-import { clx } from "$store/sdk/clx.ts";
 import { useSignal } from "@preact/signals";
+import { invoke } from "$store/runtime.ts";
 import type { JSX } from "preact";
 
 export interface Form {
@@ -45,10 +44,11 @@ function Newsletter(
 
   return (
     <div
-      class={clx(
-        "flex flex-col gap-4",
-        tiled && "lg:flex-row lg:w-full lg:justify-between",
-      )}
+      class={`flex ${
+        tiled
+          ? "flex-col gap-4 lg:flex-row lg:w-full lg:justify-between"
+          : "flex-col gap-4"
+      }`}
     >
       <div class="flex flex-col gap-4">
         {content?.title && (
