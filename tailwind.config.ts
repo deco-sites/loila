@@ -47,7 +47,7 @@ export default {
     container: { center: true },
     extend: {
       fontFamily: {
-        ubuntu: ["Ubuntu", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
       },
       colors: {
         primary: "#000000",
