@@ -1,14 +1,26 @@
 import Icon, { AvailableIcons } from "$store/components/ui/Icon.tsx";
 import Header from "$store/components/ui/SectionHeader.tsx";
 
+interface Benefit {
+  label: string;
+  /**
+   * @format icon-select
+   * @options deco-sites/storefront/loaders/availableIcons.ts
+   */
+  icon: AvailableIcons;
+  description: string;
+}
+
 export interface Props {
+  /**
+   * @default Benefits
+   */
   title?: string;
+  /**
+   * @default Check out the benefits
+   */
   description?: string;
-  benefits?: Array<{
-    label: string;
-    icon: AvailableIcons;
-    description: string;
-  }>;
+  benefits?: Array<Benefit>;
   layout?: {
     variation?: "Simple" | "With border" | "Color reverse";
     headerAlignment?: "center" | "left";
@@ -19,8 +31,8 @@ export default function Benefits(
   props: Props,
 ) {
   const {
-    title = "",
-    description = "",
+    title = "Benefits",
+    description = "Check out the benefits",
     benefits = [{
       icon: "Truck",
       label: "Entrega em todo Brasil",
@@ -61,7 +73,7 @@ export default function Benefits(
         <div class="flex-none">
           <Icon
             id={benefit.icon}
-            class={reverse ? "text-base-100" : "text-primary"}
+            class={"text-base-content"}
             width={36}
             height={36}
             strokeWidth={0.01}
@@ -70,15 +82,15 @@ export default function Benefits(
         </div>
         <div class="flex-auto flex flex-col gap-1 lg:gap-2">
           <div
-            class={`text-sm lg:text-sm leading-7 ${
+            class={`text-base lg:text-xl leading-7 ${
               reverse ? "text-base-100" : "text-base-content"
             }`}
           >
             {benefit.label}
           </div>
           <p
-            class={`text-xs leading-5  ${
-              reverse ? "text-base-100" : "text-slate-400"
+            class={`text-sm leading-5 ${
+              reverse ? "text-base-100" : "text-neutral"
             } ${benefitLayout == "piledup" ? "hidden lg:block" : ""}`}
           >
             {benefit.description}

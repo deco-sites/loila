@@ -89,7 +89,7 @@ function ShippingSimulation({ items }: Props) {
     } finally {
       loading.value = false;
     }
-  }, []);
+  }, [items, postalCode.value]);
 
   return (
     <div class="flex flex-col gap-2">
@@ -101,7 +101,6 @@ function ShippingSimulation({ items }: Props) {
       </div>
 
       <form
-        class="join"
         onSubmit={(e) => {
           e.preventDefault();
           handleSimulation();
@@ -110,7 +109,7 @@ function ShippingSimulation({ items }: Props) {
         <input
           as="input"
           type="text"
-          class="input input-bordered join-item"
+          class="input input-bordered join-item w-48"
           placeholder="Seu cep aqui"
           value={postalCode.value}
           maxLength={8}

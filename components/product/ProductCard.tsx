@@ -57,7 +57,7 @@ interface Props {
 }
 
 const WIDTH = 200;
-const HEIGHT = 200;
+const HEIGHT = 279;
 
 function ProductCard({
   product,
@@ -104,7 +104,7 @@ function ProductCard({
     <a
       href={url && relative(url)}
       aria-label="view product"
-      class="btn btn-block btn-accent text-white"
+      class="btn btn-block"
     >
       {l?.basics?.ctaText || "Ver produto"}
     </a>
@@ -113,7 +113,7 @@ function ProductCard({
   return (
     <div
       id={id}
-      class={`card card-compact group w-full px-4 ${
+      class={`card card-compact group w-full ${
         align === "center" ? "text-center" : "text-start"
       } ${l?.onMouseOver?.showCardShadow ? "lg:hover:card-bordered" : ""}
         ${
@@ -188,44 +188,43 @@ function ProductCard({
         </div>
 
         {/* Product Images */}
-        <a
-          href={url && relative(url)}
-          aria-label="view product"
-          class="grid grid-cols-1 grid-rows-1 w-full"
-        >
-          {front.url && (
-            <>
+        {front.url && (
+          <a
+            href={url && relative(url)}
+            aria-label="view product"
+            class="grid grid-cols-1 grid-rows-1 w-full"
+          >
+            <Image
+              src={front.url!}
+              alt={front.alternateName}
+              width={WIDTH}
+              height={HEIGHT}
+              class={`bg-base-100 col-span-full row-span-full rounded w-full ${
+                l?.onMouseOver?.image == "Zoom image"
+                  ? "duration-100 transition-scale scale-100 lg:group-hover:scale-125"
+                  : ""
+              }`}
+              sizes="(max-width: 640px) 50vw, 20vw"
+              preload={preload}
+              loading={preload ? "eager" : "lazy"}
+              decoding="async"
+            />
+            {(!l?.onMouseOver?.image ||
+              l?.onMouseOver?.image == "Change image") && (
               <Image
-                src={front.url!}
-                alt={front.alternateName}
+                src={back?.url ?? front.url!}
+                alt={back?.alternateName ?? front.alternateName}
                 width={WIDTH}
                 height={HEIGHT}
-                class={`bg-base-100 col-span-full row-span-full rounded w-full object-contain ${
-                  l?.onMouseOver?.image == "Zoom image"
-                    ? "duration-100 transition-scale scale-100 lg:group-hover:scale-125"
-                    : ""
-                }`}
+                class="bg-base-100 col-span-full row-span-full transition-opacity rounded w-full opacity-0 lg:group-hover:opacity-100"
                 sizes="(max-width: 640px) 50vw, 20vw"
-                preload={preload}
-                loading={preload ? "eager" : "lazy"}
+                loading="lazy"
                 decoding="async"
               />
-              {(!l?.onMouseOver?.image ||
-                l?.onMouseOver?.image == "Change image") && (
-                <Image
-                  src={back?.url ?? front.url!}
-                  alt={back?.alternateName ?? front.alternateName}
-                  width={WIDTH}
-                  height={HEIGHT}
-                  class="bg-base-100 col-span-full row-span-full transition-opacity rounded w-full opacity-0 lg:group-hover:opacity-100"
-                  sizes="(max-width: 640px) 50vw, 20vw"
-                  loading="lazy"
-                  decoding="async"
-                />
-              )}
-            </>
-          )}
-        </a>
+            )}
+          </a>
+        )}
+
         <figcaption
           class={`
           absolute bottom-1 left-0 w-full flex flex-col gap-3 p-2 ${

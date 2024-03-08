@@ -93,22 +93,20 @@ export default function ShoppableBanner(props: Props) {
               width={384}
               height={227}
             />
-            <Image
+            <img
               class="w-full h-full object-cover"
               sizes="(max-width: 640px) 100vw, 30vw"
               src={image?.mobile}
               alt={image?.altText}
               decoding="async"
               loading="lazy"
-              width={150}
-              height={150}
             />
           </Picture>
           {pins?.map(({ mobile, desktop, link, label }) => (
             <>
               <a
                 href={link}
-                class="absolute w-min btn btn-white rounded-full hover:rounded text-primary no-animation md:scale-[30%] hover:text-accent-content hover:scale-125 sm:hidden"
+                class="absolute w-min btn btn-accent rounded-full hover:rounded text-accent no-animation md:scale-[30%] hover:text-accent-content hover:scale-125 sm:hidden"
                 style={{
                   left: `${mobile.x}%`,
                   top: `${mobile.y}%`,
@@ -118,7 +116,7 @@ export default function ShoppableBanner(props: Props) {
               </a>
               <a
                 href={link}
-                class="absolute w-min btn btn-white rounded-full hover:rounded text-primary no-animation md:scale-[30%] hover:text-accent-content hover:scale-125 hidden sm:inline-flex"
+                class="absolute w-min btn btn-accent rounded-full hover:rounded text-accent no-animation md:scale-[30%] hover:text-accent-content hover:scale-125 hidden sm:inline-flex"
                 style={{
                   left: `${desktop?.x ?? mobile.x}%`,
                   top: `${desktop?.y ?? mobile.y}%`,
@@ -129,22 +127,15 @@ export default function ShoppableBanner(props: Props) {
             </>
           ))}
         </figure>
-        <div class="flex flex-col justify-center gap-6 py-20 px-8 bg-slate-50">
-          <h2
-            class={`card-title text-primary font-normal flex ${title?.layout?.position}`}
-          >
+        <div class="flex flex-col justify-center gap-6 py-20 px-8 bg-neutral-content">
+          <h2 class={`card-title flex ${title?.layout?.position}`}>
             {title?.content}
           </h2>
-          <p class={`text-sm ${text?.layout?.position}`}>
+          <p class={`text-base-content ${text?.layout?.position}`}>
             {text?.content}
           </p>
           <div class={`card-actions ${link?.layout?.position}`}>
-            <a
-              class="underline text-secondary text-sm font-normal"
-              href={link?.href}
-            >
-              {link?.text}
-            </a>
+            <a class="underline" href={link?.href}>{link?.text}</a>
           </div>
         </div>
       </div>
