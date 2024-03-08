@@ -1,10 +1,10 @@
 import { Picture, Source } from "apps/website/components/Picture.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
 import Image from "apps/website/components/Image.tsx";
-import { FormEvent, h } from "preact";
-import { useState } from "preact/hooks";
-import { FnContext } from "deco/mod.ts";
 import { AppContext } from "$store/apps/site.ts";
+import Slider from "$store/components/ui/Slider.tsx";
+import SliderJS from "$store/islands/SliderJS.tsx";
+import { useId } from "$store/sdk/useId.ts";
 
 /**
  * @titleBy alt
@@ -126,60 +126,100 @@ export default function BannnerGrid(props: Props<typeof loader>) {
     itemsPerLine,
     borderRadius,
     banners = [],
-    device
+    device,
   } = { ...DEFAULT_PROPS, ...props };
-  console.log("isMobile", device);
-  
+  const isMobile = device;
+  const id = useId();
+
   return (
-    <section class="container w-full px-4 md:px-0 mx-auto">
-      {title &&
-        (
-          <div class="py-6 md:py-0 md:pb-[40px] flex items-center mt-6">
+    isMobile ? (
+      <div class="container w-full mx-auto">
+        {title && (
+          <div class="py-6 flex items-center mt-6">
             <h2 class="text-lg leading-5 font-semibold uppercase">
               {title}
             </h2>
-
             <div class="bg-[#e5e5ea] h-[1px] w-full ml-4"></div>
           </div>
         )}
-      <div
-        class={`grid gap-4 md:gap-6 ${
-          MOBILE_COLUMNS[itemsPerLine?.mobile ?? 2]
-        } ${DESKTOP_COLUMNS[itemsPerLine?.desktop ?? 2]}`}
-      >
-        {banners.map(({ href, srcMobile, srcDesktop, alt }) => (
-          <a
-            href={href}
-            class={`overflow-hidden ${
-              RADIUS_MOBILE[borderRadius.mobile ?? "none"]
-            } ${RADIUS_DESKTOP[borderRadius.desktop ?? "none"]} `}
-          >
-            <Picture>
-              <Source
-                media="(max-width: 767px)"
-                src={srcMobile}
-                width={100}
-                height={100}
-              />
-              <Source
-                media="(min-width: 768px)"
-                src={srcDesktop ? srcDesktop : srcMobile}
-                width={250}
-                height={250}
-              />
-              <img
-                class="w-full"
-                sizes="(max-width: 640px) 100vw, 30vw"
-                src={srcMobile}
-                alt={alt}
-                decoding="async"
-                loading="lazy"
-              />
-            </Picture>
-          </a>
-        ))}
+        <Slider class="carousel carousel-center sm:carousel-end sm:gap-1 row-start-2 row-end-5">
+          {banners.map(({ href, srcMobile, alt, index }) => (
+            <Slider.Item class="carousel-item w-1/2" index={index}>
+              <a href={href}>
+                <Picture>
+                  <Source
+                    media="(max-width: 767px)"
+                    src={srcMobile}
+                    width={100}
+                    height={100}
+                  />
+                  <img
+                    class="w-full"
+                    sizes="(max-width: 640px) 100vw, 30vw"
+                    src={srcMobile}
+                    alt={alt}
+                    decoding="async"
+                    loading="lazy"
+                  />
+                </Picture>
+              </a>
+            </Slider.Item>
+          ))}
+        </Slider>
+        <SliderJS rootId={id} />
       </div>
-    </section>
+    ): (
+      <section class="container w-full px-4 md:px-0 mx-auto">
+        {title &&
+          (
+            <div class="py-6 md:py-0 md:pb-[40px] flex items-center mt-6">
+              <h2 class="text-lg leading-5 font-semibold uppercase">
+                {title}
+              </h2>
+
+              <div class="bg-[#e5e5ea] h-[1px] w-full ml-4"></div>
+            </div>
+          )}
+        <div
+          class={`grid gap-4 md:gap-6 ${
+            MOBILE_COLUMNS[itemsPerLine?.mobile ?? 2]
+          } ${DESKTOP_COLUMNS[itemsPerLine?.desktop ?? 2]}`}
+        >
+          {banners.map(({ href, srcMobile, srcDesktop, alt }) => (
+            <a
+              href={href}
+              class={`overflow-hidden ${
+                RADIUS_MOBILE[borderRadius.mobile ?? "none"]
+              } ${RADIUS_DESKTOP[borderRadius.desktop ?? "none"]} `}
+            >
+              <Picture>
+                <Source
+                  media="(max-width: 767px)"
+                  src={srcMobile}
+                  width={100}
+                  height={100}
+                />
+                <Source
+                  media="(min-width: 768px)"
+                  src={srcDesktop ? srcDesktop : srcMobile}
+                  width={250}
+                  height={250}
+                />
+                <img
+                  class="w-full"
+                  sizes="(max-width: 640px) 100vw, 30vw"
+                  src={srcMobile}
+                  alt={alt}
+                  decoding="async"
+                  loading="lazy"
+                />
+              </Picture>
+            </a>
+          ))}
+        </div>
+      </section>
+    )
+
   );
 }
 
