@@ -83,13 +83,13 @@ function Header({
 
   return (
     <>
-      <header style={{ height: headerHeight }}>
+      <header >
         <Drawers
           menu={{ items }}
           searchbar={searchbar}
           platform={platform}
         >
-          <div class="bg-base-100 fixed w-full z-50">
+          <div class="fixed w-full z-50">
             {alerts && alerts.length > 0 && <Alert alerts={alerts} />}
             <Navbar
               device={device}

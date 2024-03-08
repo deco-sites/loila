@@ -41,6 +41,15 @@ function Menu({ items }: Props) {
         <li>
           <a
             class="flex items-center gap-4 px-4 py-2"
+            href="https://www.deco.cx"
+          >
+            <Icon id="User" size={24} strokeWidth={2} />
+            <span class="text-sm">Minha conta</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="flex items-center gap-4 px-4 py-2"
             href="/wishlist"
           >
             <Icon id="Heart" size={24} strokeWidth={2} />
@@ -63,15 +72,6 @@ function Menu({ items }: Props) {
           >
             <Icon id="Phone" size={24} strokeWidth={2} />
             <span class="text-sm">Fale conosco</span>
-          </a>
-        </li>
-        <li>
-          <a
-            class="flex items-center gap-4 px-4 py-2"
-            href="https://www.deco.cx"
-          >
-            <Icon id="User" size={24} strokeWidth={2} />
-            <span class="text-sm">Minha conta</span>
           </a>
         </li>
       </ul>

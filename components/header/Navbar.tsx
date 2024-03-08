@@ -33,7 +33,7 @@ function Navbar(
     return (
       <div
         style={{ height: navbarHeight }}
-        class="lg:hidden grid grid-cols-3 justify-between items-center border-b border-base-200 w-full px-6 pb-6 gap-2"
+        class="lg:hidden grid grid-cols-3 justify-between items-center w-full px-6 pb-6 gap-2"
       >
         <MenuButton />
         {logo && (
@@ -67,7 +67,7 @@ function Navbar(
 
   // Desktop header
   return (
-    <div class="hidden sm:grid sm:grid-cols-3 items-center border-b border-base-200 w-full px-6">
+    <div class="hidden sm:grid sm:grid-cols-3 items-center w-full px-6">
       <ul
         class={`flex gap-6 col-span-1 ${
           logoPosition === "left" ? "justify-center" : "justify-start"

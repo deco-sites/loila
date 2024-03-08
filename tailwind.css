@@ -56,3 +56,20 @@
     --dot-progress: 100%
   }
 }
+
+.carousel-item.active .dot {
+  --dot-size: 20px; /* Tamanho do ponto quando estiver ativo */
+}
+
+.carousel-item .dot {
+  --dot-size: 10px; /* Tamanho do ponto quando estiver inativo */
+}
+
+@keyframes dot-active {
+  from {
+    --dot-size: 10px; /* Tamanho inicial do ponto */
+  }
+  to {
+    --dot-size: 20px; /* Tamanho final do ponto quando ativo */
+  }
+}
