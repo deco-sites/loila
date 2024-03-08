@@ -83,7 +83,7 @@ function Header({
 
   return (
     <>
-      <header >
+      <header>
         <Drawers
           menu={{ items }}
           searchbar={searchbar}
