@@ -1,6 +1,10 @@
 import { Picture, Source } from "apps/website/components/Picture.tsx";
 import type { ImageWidget } from "apps/admin/widgets.ts";
 import Image from "apps/website/components/Image.tsx";
+import { FormEvent, h } from "preact";
+import { useState } from "preact/hooks";
+import { FnContext } from "deco/mod.ts";
+import { AppContext } from "$store/apps/site.ts";
 
 /**
  * @titleBy alt
@@ -36,8 +40,8 @@ export interface Props {
   itemsPerLine: {
     /** @default 2 */
     mobile?: 1 | 2;
-    /** @default 4 */
-    desktop?: 1 | 2 | 4 | 6 | 8;
+    /** @default 2 */
+    desktop?: 1 | 2 | 3 | 6 | 8;
   };
   /**
    * @description Item's border radius in px
@@ -59,7 +63,7 @@ const MOBILE_COLUMNS = {
 const DESKTOP_COLUMNS = {
   1: "sm:grid-cols-1",
   2: "sm:grid-cols-2",
-  4: "sm:grid-cols-4",
+  3: "sm:grid-cols-3",
   6: "sm:grid-cols-6",
   8: "sm:grid-cols-8",
 };
@@ -116,14 +120,16 @@ const DEFAULT_PROPS: Props = {
   },
 };
 
-export default function BannnerGrid(props: Props) {
+export default function BannnerGrid(props: Props<typeof loader>) {
   const {
     title,
     itemsPerLine,
     borderRadius,
     banners = [],
+    device
   } = { ...DEFAULT_PROPS, ...props };
-
+  console.log("isMobile", device);
+  
   return (
     <section class="container w-full px-4 md:px-0 mx-auto">
       {title &&
@@ -139,7 +145,7 @@ export default function BannnerGrid(props: Props) {
       <div
         class={`grid gap-4 md:gap-6 ${
           MOBILE_COLUMNS[itemsPerLine?.mobile ?? 2]
-        } ${DESKTOP_COLUMNS[itemsPerLine?.desktop ?? 4]}`}
+        } ${DESKTOP_COLUMNS[itemsPerLine?.desktop ?? 2]}`}
       >
         {banners.map(({ href, srcMobile, srcDesktop, alt }) => (
           <a
@@ -176,3 +182,7 @@ export default function BannnerGrid(props: Props) {
     </section>
   );
 }
+
+export const loader = (props: Props, _req: Request, ctx: AppContext) => {
+  return { ...props, device: ctx.device };
+};
