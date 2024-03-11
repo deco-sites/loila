@@ -46,8 +46,8 @@ function Navbar(
             <Image
               src={logo.src}
               alt={logo.alt}
-              width={logo.width || 100}
-              height={logo.height || 13}
+              width={logo.width || 89}
+              height={logo.height || 36}
             />
           </a>
         )}
@@ -67,7 +67,7 @@ function Navbar(
 
   // Desktop header
   return (
-    <div class="hidden sm:grid sm:grid-cols-3 items-center w-full px-6">
+    <div class="hidden sm:grid sm:grid-cols-3 items-center w-full px-4">
       <ul
         class={`flex gap-6 col-span-1 ${
           logoPosition === "left" ? "justify-center" : "justify-start"
@@ -89,8 +89,8 @@ function Navbar(
             <Image
               src={logo.src}
               alt={logo.alt}
-              width={logo.width || 100}
-              height={logo.height || 13}
+              width={logo.width || 89}
+              height={logo.height || 36}
             />
           </a>
         )}
