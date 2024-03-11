@@ -54,6 +54,10 @@ export interface Props {
    * @description time (in seconds) to start the carousel autoplay
    */
   interval?: number;
+  maxHeight?: string;
+  /**
+   * @description value in Pixels
+   */
 }
 
 const DEFAULT_PROPS = {
@@ -99,6 +103,7 @@ const DEFAULT_PROPS = {
     },
   ],
   preload: true,
+  maxHeight: '283'
 };
 
 function BannerItem(
@@ -221,11 +226,12 @@ function Buttons() {
 
 function BannerCarousel(props: Props) {
   const id = useId();
-  const { images, preload, interval } = { ...DEFAULT_PROPS, ...props };
+  const { images, preload, interval, maxHeight } = { ...DEFAULT_PROPS, ...props };
 
   return (
     <div
       id={id}
+      style={{maxHeight: `${maxHeight}px`}}
       class="grid grid-cols-[48px_1fr_48px] sm:grid-cols-[120px_1fr_120px] grid-rows-[1fr_48px_1fr_64px] sm:min-h-min min-h-[660px]"
     >
       <Slider class="carousel carousel-center w-full col-span-full row-span-full gap-6">
