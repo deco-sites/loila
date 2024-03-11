@@ -88,7 +88,7 @@ function Searchbar({
         >
           {loading.value
             ? <span class="loading loading-spinner loading-xs" />
-            : <Icon id="MagnifyingGlass" size={24} strokeWidth={0.01} />}
+            : <Icon id="searchHeader" size={24} strokeWidth={0.01} />}
         </Button>
         <input
           ref={searchInputRef}
@@ -116,7 +116,7 @@ function Searchbar({
         />
         <Button
           type="button"
-          class="join-item btn-ghost btn-square hidden sm:inline-flex"
+          class="join-item btn-ghost btn-square hidden sm:inline-flex items-center"
           onClick={() => displaySearchPopup.value = false}
           ariaLabel={displaySearchPopup.value ? "open search" : "search closed"}
         >
@@ -142,7 +142,7 @@ function Searchbar({
                   <a href={`/s?q=${term}`} class="flex gap-4 items-center">
                     <span>
                       <Icon
-                        id="MagnifyingGlass"
+                        id="searchHeader"
                         size={24}
                         strokeWidth={0.01}
                       />

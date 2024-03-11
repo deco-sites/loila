@@ -98,7 +98,7 @@ function Navbar(
       <div class="flex-none flex items-center justify-end gap-6 col-span-1">
         {!buttons?.hideSearchButton && (
           <div class="flex items-center text-xs font-thin gap-1">
-            <SearchButton />SEARCH
+            <SearchButton />
           </div>
         )}
 
@@ -110,9 +110,8 @@ function Navbar(
             aria-label="Account"
           >
             <div class="flex btn btn-circle btn-sm btn-ghost gap-1">
-              <Icon id="User" size={20} strokeWidth={0.4} />
+              <Icon id="userHeader" size={20} strokeWidth={0.4} />
             </div>
-            ACCOUNT
           </a>
         )}
         {!buttons?.hideWishlistButton && (

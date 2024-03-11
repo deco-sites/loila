@@ -8,13 +8,13 @@ export default function SearchButton() {
   return (
     <>
       <Button
-        class="btn-circle btn-sm btn-ghost hidden sm:flex"
+        class="btn-circle btn-sm btn-ghost flex items-center justify-center"
         aria-label="search icon button"
         onClick={() => {
           displaySearchPopup.value = !displaySearchPopup.value;
         }}
       >
-        <Icon id="MagnifyingGlass" size={20} strokeWidth={0.1} />
+        <Icon id="searchHeader" size={20} strokeWidth={0.1} />
       </Button>
       <Button
         class="btn-circle btn-sm btn-ghost sm:hidden"
@@ -23,7 +23,7 @@ export default function SearchButton() {
           displaySearchDrawer.value = !displaySearchDrawer.value;
         }}
       >
-        <Icon id="MagnifyingGlass" size={20} strokeWidth={0.1} />
+        <Icon id="searchHeader" size={20} strokeWidth={0.1} />
       </Button>
     </>
   );
