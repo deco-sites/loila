@@ -165,9 +165,9 @@ export default function BannnerGrid(props: Props<typeof loader>) {
       : (
         <section class="w-full mt-1 px-4 md:px-0 mx-auto">
           <div
-            class={`grid gap-1 ${
-              MOBILE_COLUMNS[itemsPerLine?.mobile ?? 2]
-            } ${DESKTOP_COLUMNS[itemsPerLine?.desktop ?? 2]}`}
+            class={`grid gap-1 ${MOBILE_COLUMNS[itemsPerLine?.mobile ?? 2]} ${
+              DESKTOP_COLUMNS[itemsPerLine?.desktop ?? 2]
+            }`}
           >
             {banners.map(({ href, srcMobile, srcDesktop, alt }) => (
               <a
