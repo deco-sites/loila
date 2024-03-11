@@ -30,9 +30,9 @@ export interface Banner {
     subTitle?: string;
     /** @description Button label */
     label: string;
-    position?: 'left' | 'center' | 'right'
+    position?: "left" | "center" | "right";
     /** @default center */
-    layout?: 'option1' | 'option2'
+    layout?: "option1" | "option2";
     /** @default option1 */
   };
 }
@@ -66,8 +66,8 @@ export interface Props {
 
 const LAYOUT_BUTTON = {
   option1: "bg-primary text-white",
-  option2: "bg-transparent text-primary border border-black"
-}
+  option2: "bg-transparent text-primary border border-black",
+};
 
 const DEFAULT_PROPS = {
   images: [
@@ -132,11 +132,19 @@ function BannerItem(
       class="relative overflow-y-hidden w-full"
     >
       {action && (
-        <div className={`absolute ${action.position === 'left' ? 'left-0' : action.position === 'center' ? 'left-1/2 -translate-x-1/2' : 'right-0'} flex flex-col items-center top-1/2 transform -translate-y-1/2 px-8 gap-4`}>
+        <div
+          className={`absolute ${
+            action.position === "left"
+              ? "left-0"
+              : action.position === "center"
+              ? "left-1/2 -translate-x-1/2"
+              : "right-0"
+          } flex flex-col items-center top-1/2 transform -translate-y-1/2 px-8 gap-4`}
+        >
           {action.title && (
             <h2
               className="text-black font-light text-4xl tracking-widest uppercase"
-              style={{letterSpacing: '15px'}}
+              style={{ letterSpacing: "15px" }}
             >
               {action.title}
             </h2>
@@ -148,7 +156,9 @@ function BannerItem(
           )}
 
           <Button
-            className={`${LAYOUT_BUTTON[action.layout]} text-sm uppercase tracking-widest py-2.5 px-5 w-fit`}
+            className={`${
+              LAYOUT_BUTTON[action.layout]
+            } text-sm uppercase tracking-widest py-2.5 px-5 w-fit`}
             aria-label={action.label}
           >
             {action.label}
