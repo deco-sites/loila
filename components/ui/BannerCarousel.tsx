@@ -103,7 +103,6 @@ const DEFAULT_PROPS = {
     },
   ],
   preload: true,
-  maxHeight: "283",
 };
 
 function BannerItem(
