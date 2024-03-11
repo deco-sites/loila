@@ -132,18 +132,10 @@ export default function BannnerGrid(props: Props<typeof loader>) {
   const id = useId();
 
   return (
-    isMobile
+    isMobile == "mobile"
       ? (
-        <div class="container w-full mx-auto">
-          {title && (
-            <div class="py-6 flex items-center mt-6">
-              <h2 class="text-lg leading-5 font-semibold uppercase">
-                {title}
-              </h2>
-              <div class="bg-[#e5e5ea] h-[1px] w-full ml-4"></div>
-            </div>
-          )}
-          <Slider class="carousel carousel-center sm:carousel-end sm:gap-1 row-start-2 row-end-5">
+        <div class="container mt-1 w-full mx-auto">
+          <Slider class="carousel carousel-center sm:carousel-end gap-1 row-start-2 row-end-5">
             {banners.map(({ href, srcMobile, alt, index }) => (
               <Slider.Item class="carousel-item w-1/2" index={index}>
                 <a href={href}>
@@ -171,19 +163,9 @@ export default function BannnerGrid(props: Props<typeof loader>) {
         </div>
       )
       : (
-        <section class="container w-full px-4 md:px-0 mx-auto">
-          {title &&
-            (
-              <div class="py-6 md:py-0 md:pb-[40px] flex items-center mt-6">
-                <h2 class="text-lg leading-5 font-semibold uppercase">
-                  {title}
-                </h2>
-
-                <div class="bg-[#e5e5ea] h-[1px] w-full ml-4"></div>
-              </div>
-            )}
+        <section class="w-full mt-1 px-4 md:px-0 mx-auto">
           <div
-            class={`grid gap-4 md:gap-6 ${
+            class={`grid gap-1 ${
               MOBILE_COLUMNS[itemsPerLine?.mobile ?? 2]
             } ${DESKTOP_COLUMNS[itemsPerLine?.desktop ?? 2]}`}
           >
