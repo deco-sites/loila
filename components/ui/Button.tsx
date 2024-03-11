@@ -16,10 +16,12 @@ const Button = forwardRef<HTMLButtonElement, Props>(({
   ariaLabel,
   children,
   ...props
-}, ref) => (
-  <button
+}, ref) => { 
+ 
+  return (
+    <button
     {...props}
-    className={`btn no-animation ${_class}`}
+    className={`no-animation hover:brightness-90 ${_class} ${props?.className}`}
     disabled={disabled || loading}
     aria-label={ariaLabel || props["aria-label"]}
     type={type}
@@ -27,6 +29,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(({
   >
     {loading ? <span class="loading loading-spinner" /> : children}
   </button>
-));
+  )
+})
 
 export default Button;

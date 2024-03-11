@@ -30,6 +30,10 @@ export interface Banner {
     subTitle?: string;
     /** @description Button label */
     label: string;
+    position?: 'left' | 'center' | 'right'
+    /** @default center */
+    layout?: 'option1' | 'option2'
+    /** @default option1 */
   };
 }
 
@@ -58,6 +62,11 @@ export interface Props {
   /**
    * @description value in Pixels
    */
+}
+
+const LAYOUT_BUTTON = {
+  option1: "bg-primary text-white",
+  option2: "bg-transparent text-primary border border-black"
 }
 
 const DEFAULT_PROPS = {
@@ -123,21 +132,30 @@ function BannerItem(
       class="relative overflow-y-hidden w-full"
     >
       {action && (
-        <div class="absolute top-0 md:bottom-1/2 bottom-1/2 left-0 right-0 sm:left-auto max-w-[407px] flex flex-col justify-end gap-4 px-8 py-12">
-          <span class="text-2xl font-light text-base-100">
-            {action.title}
-          </span>
-          <span class="font-normal text-4xl text-base-100">
-            {action.subTitle}
-          </span>
+        <div className={`absolute ${action.position === 'left' ? 'left-0' : action.position === 'center' ? 'left-1/2 -translate-x-1/2' : 'right-0'} flex flex-col items-center top-1/2 transform -translate-y-1/2 px-8 gap-4`}>
+          {action.title && (
+            <h2
+              className="text-black font-light text-4xl tracking-widest uppercase"
+              style={{letterSpacing: '15px'}}
+            >
+              {action.title}
+            </h2>
+          )}
+          {action.subTitle && (
+            <span className="text-black font-light text-sm tracking-widest uppercase">
+              {action.subTitle}
+            </span>
+          )}
+
           <Button
-            class="bg-base-100 text-sm font-light py-4 px-6 w-fit"
+            className={`${LAYOUT_BUTTON[action.layout]} text-sm uppercase tracking-widest py-2.5 px-5 w-fit`}
             aria-label={action.label}
           >
             {action.label}
           </Button>
         </div>
       )}
+
       <Picture preload={lcp}>
         <Source
           media="(max-width: 767px)"
