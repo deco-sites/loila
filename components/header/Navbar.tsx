@@ -33,7 +33,7 @@ function Navbar(
     return (
       <div
         style={{ height: navbarHeight }}
-        class="lg:hidden grid grid-cols-3 justify-between items-center w-full px-6 pb-6 gap-2"
+        class="lg:hidden flex justify-between items-center w-full p-4"
       >
         <MenuButton />
         {logo && (
@@ -53,6 +53,17 @@ function Navbar(
         )}
 
         <div class="flex justify-end gap-1">
+          {!buttons?.hideAccountButton && (
+            <a
+              class="flex items-center text-xs font-thin"
+              href="/account"
+              aria-label="Account"
+            >
+              <div class="flex btn btn-circle btn-sm btn-ghost gap-1">
+                <Icon id="userHeader" size={20} strokeWidth={0.4} />
+              </div>
+            </a>
+          )}
           <SearchButton />
           {platform === "vtex" && <CartButtonVTEX />}
           {platform === "vnda" && <CartButtonVDNA />}
