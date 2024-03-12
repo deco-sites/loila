@@ -79,7 +79,7 @@ function ProductShelf({
             <Slider.Item
               index={index}
               class={clx(
-                "carousel-item",
+                "carousel-item lg:max-w-xs lg:m-auto border border-solid border-black border-opacity-10",
                 slideDesktop[layout?.numberOfSliders?.desktop ?? 3],
                 slideMobile[layout?.numberOfSliders?.mobile ?? 1],
               )}

@@ -176,8 +176,8 @@ function ProductCard({
           </div>
           {/* Discount % */}
           {!l?.hide?.discount && (
-            <div class="text-sm bg-base-100 p-[10px]">
-              <span class="text-base-content font-bold">
+            <div class="text-white font-normal text-xs tracking-wider uppercase bg-black flex p-2 justify-center items-center gap-2">
+              <span class="text-white font-normal text-xs tracking-wider uppercase">
                 {listPrice && price
                   ? `${Math.round(((listPrice - price) / listPrice) * 100)}% `
                   : ""}
@@ -276,8 +276,9 @@ function ProductCard({
                 )
                 : (
                   <h2
-                    class="truncate text-base lg:text-lg text-base-content uppercase font-normal"
+                    class="text-black font-normal text-xs tracking-wider uppercase"
                     dangerouslySetInnerHTML={{ __html: name ?? "" }}
+                    style={{letterSpacing: '3px'}}
                   />
                 )}
               {l?.hide?.productDescription
@@ -299,20 +300,20 @@ function ProductCard({
           : (
             <div class="flex flex-col gap-2">
               <div
-                class={`flex flex-col gap-0 ${
+                class={`flex gap-4 items-center ${
                   l?.basics?.oldPriceSize === "Normal"
                     ? "lg:flex-row-reverse lg:gap-2"
                     : ""
                 } ${align === "center" ? "justify-center" : "justify-end"}`}
               >
                 <div
-                  class={`line-through text-base-300 text-xs font-light ${
+                  class={`text-black opacity-50 font-normal text-xs tracking-wider line-through uppercaset ${
                     l?.basics?.oldPriceSize === "Normal" ? "lg:text-sm" : ""
                   }`}
                 >
                   {formatPrice(listPrice, offers?.priceCurrency)}
                 </div>
-                <div class="text-base-content lg:text-sm font-light">
+                <div class="text-black font-normal text-xs tracking-wider uppercase">
                   {formatPrice(price, offers?.priceCurrency)}
                 </div>
               </div>
