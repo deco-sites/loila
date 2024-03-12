@@ -9,7 +9,10 @@ function NavItem({ item }: { item: SiteNavigationElement }) {
   return (
     <li class="group flex items-center">
       <a href={url} class="py-6">
-        <span style={{letterSpacing: '3px'}} class="group-hover:underline text-white font-normal text-base tracking-widest uppercase">
+        <span
+          style={{ letterSpacing: "3px" }}
+          class="group-hover:underline text-white font-normal text-base tracking-widest uppercase"
+        >
           {name}
         </span>
       </a>
