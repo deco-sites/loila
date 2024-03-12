@@ -54,7 +54,10 @@ function Drawer(props: Props) {
         {children}
       </div>
 
-      <aside style={{zIndex: '99'}} class="drawer-side h-full overflow-hidden">
+      <aside
+        style={{ zIndex: "99" }}
+        class="drawer-side h-full overflow-hidden"
+      >
         <label for={id} class="drawer-overlay" />
         {!lazy.value && aside}
       </aside>
