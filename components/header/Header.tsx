@@ -89,7 +89,15 @@ function Header({
           searchbar={searchbar}
           platform={platform}
         >
-          <div class="fixed w-full z-50">
+          <div
+            class="fixed w-full z-50"
+            style={{
+              backgroundImage:
+                "linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.20) 100%)",
+              backdropFilter: "blur(2px)",
+              WebkitBackdropFilter: "blur(2px)",
+            }}
+          >
             {alerts && alerts.length > 0 && <Alert alerts={alerts} />}
             <Navbar
               device={device}
