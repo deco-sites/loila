@@ -143,7 +143,7 @@ function BannerItem(
         >
           {action.title && (
             <h2
-              className="text-black font-light text-4xl tracking-widest uppercase"
+              className="text-black font-light text-sm lg:text-xl tracking-widest uppercase"
               style={{ letterSpacing: "15px" }}
             >
               {action.title}
