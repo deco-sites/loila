@@ -278,7 +278,7 @@ function ProductCard({
                   <h2
                     class="text-black font-normal text-xs tracking-wider uppercase"
                     dangerouslySetInnerHTML={{ __html: name ?? "" }}
-                    style={{letterSpacing: '3px'}}
+                    style={{ letterSpacing: "3px" }}
                   />
                 )}
               {l?.hide?.productDescription
